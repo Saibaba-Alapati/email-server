@@ -4,11 +4,14 @@
   "description": "You ca create your own email server",
   "main": "main.js",
   "scripts": {
+    "start": "node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Saibaba-Alapati",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemailer": "^6.5.0",
+    "smtp-server": "^3.8.0"
   }
 }
