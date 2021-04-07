@@ -2,9 +2,9 @@
   "name": "emailserver",
   "version": "1.0.0",
   "description": "You can create your own email server",
-  "main": "mailbox.js",
+  "main": "fetchmails/mailbox.js",
   "scripts": {
-    "start": "node mailbox.js",
+    "start": "node fetchmails/mailbox.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Saibaba-Alapati",
@@ -13,12 +13,10 @@
     "express": "^4.17.1",
     "imap": "^0.8.19",
     "mailparser": "^3.2.0",
-    "nodemailer": "^6.5.0",
-    "smtp-server": "^3.8.0"
+    "nodemailer": "^6.5.0"
   },
   "devDependencies": {
     "@types/imap": "^0.8.33",
-    "@types/nodemailer": "^6.4.1",
-    "@types/smtp-server": "^3.5.6"
+    "@types/nodemailer": "^6.4.1"
   }
 }
