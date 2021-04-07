@@ -5,7 +5,6 @@ const Imap = require('imap'),inspect = require('util').inspect;
 let getEmailFromInbox = (mailServer) => {
     mailServer.openBox('INBOX', true, function (err, box) {
         if (err) throw err;
-        // we can define range '1:3'
         let f = mailServer.seq.fetch('1:*', {
             bodies: 'HEADER.FIELDS (FROM TO SUBJECT DATE)',
             struct: true
@@ -55,7 +54,7 @@ let deleteLabel = (mailServer,labelName) => {
     mailServer.delBox(labelName,(error)=>{});
     console.log('message', 'Label or Box removed');
 }
-let imap  = new Imap({
+let imapServer  = new Imap({
     user : 'yourgmail@gmail.com', //replace with your gmail
     password:'yourpassword', //replace with your password
     host: 'imap.gmail.com',
@@ -69,19 +68,19 @@ let imap  = new Imap({
     console.log(err.message);
 });
 
-imap.once('ready',function(){
-    imap.openBox('INBOX',true,function(err,box){
+imapServer.once('ready',function(){
+    imapServer.openBox('INBOX',true,function(err,box){
         if(err){
-            console.log('Error %s'+err.message);
+            console.log(err.message);
         }
         console.log('message','server1 ready');
     });
 
     //operations
-    getMailboxLabels(imap);
-    getEmailFromInbox(imap)
-    deleteLabel(imap, "demo-label1");
-    getMailboxStatusByName(imap, "INBOX");
+    getMailboxLabels(imapServer);
+    getEmailFromInbox(imapServer)
+    deleteLabel(imapServer, "demo-label1");
+    getMailboxStatusByName(imapServer, "INBOX");
 })
 
-imap.connect();
+imapServer.connect();
